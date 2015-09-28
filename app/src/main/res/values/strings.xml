@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">KIT Mensa Plan</string>
+    <string name="Settings">Einstellungen</string>
+    <string name="empty" tools:ignore="UnusedResources">Keine Daten</string>
+    <string name="download_error" tools:ignore="UnusedResources">Download nicht möglich.</string>
+    <string name="webcam">Live Cam</string>
+    <string name="today">Heute</string>
+    <string name="reload">Neu Laden</string>
+    <string name="googlemeal">Google Suche</string>
+    <string name="googlemealpic">Google Bildersuche</string>
+    <string name="no_plan_header">Keine Informationen für diesen Tag.</string>
+    <string name="no_plan_text">…</string>
+    <string name="date_today">Heute</string>
+    <string name="happy_cow_gratulations">Glückwunsch! Du hast eine glückliche Kuh gefunden.</string>
+    <string name="happy_cow_already_found">Diese glückliche Kuh hast du bereits gefunden.</string>
+
+    <plurals name="happy_cow_total">
+        <item quantity="zero">Du hast bisher keine glücklichen Kühe gesammelt!</item>
+        <item quantity="one">Du hast insgesamt %d glückliche Kuh gesammelt!</item>
+        <item quantity="other">Du hast insgesamt %d glückliche Kühe gesammelt!</item>
+    </plurals>
+
+    <string name="open_drawer">Mensa-Auswahl öffnen</string>
+    <string name="close_drawer">Mensa-Auswahl schließen</string>
+    <string name="notifications">Benachrichtigungen</string>
+    <string name="notification_tutorial">Falls du dich in der angegebenen Zeit in dem blauen Bereich befindest, wird eine Benachrichtigung mit dem aktuellen Mensa-Plan erzeugt. Berühre die Karte, um den Mittelpunkt des blauen Bereichs zu verschieben.</string>
+    <string name="enable_notifications">Benachrichtigungen einschalten</string>
+    <string name="notification_start">Ab</string>
+    <string name="notification_end">Bis</string>
+    <string name="notification_radius">Radius: %s m</string>
+    <string name="google_play_services_not_installed">Google Play Services sind nicht installiert.</string>
+    <string name="plan_from">Mensa-Plan vom %s</string>
+    <string name="click_to_open">Berühren, um in der App anzusehen</string>
+    <string name="notification_question_title">Automatischer Mensa-Plan auf deinem Android Wear</string>
+    <string name="notification_question">Möchtest du automatische Benachrichtigungen für den aktuellen Mensa-Plan einstellen?</string>
+    <string name="test">Testen</string>
+    <string name="help">Hilfe</string>
+
+</resources>

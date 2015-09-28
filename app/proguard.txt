@@ -1,0 +1,8 @@
+-keep public class * extends com.cypressworks.mensaplan.planmanager.PlanManager
+
+-dontwarn butterknife.internal.**
+-keep class **$$ViewInjector { *; }
+-keepnames class * { @butterknife.InjectView *;}
+
+
+-dontwarn java.lang.invoke**

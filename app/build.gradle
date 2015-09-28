@@ -1,0 +1,75 @@
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+
+    signingConfigs {
+        release {
+            storeFile file('../motivkey.keystore')
+        }
+    }
+
+    defaultConfig {
+        applicationId 'com.cypressworks.mensaplan'
+        minSdkVersion 9
+        targetSdkVersion 22
+        versionCode 24
+        versionName "2.2"
+    }
+
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.txt'
+        }
+    }
+    productFlavors {
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'org.jsoup:jsoup:1.7.3'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile files('libs/json-simple.jar')
+    compile 'com.google.android.gms:play-services:8.1.0'
+    compile 'com.jakewharton:butterknife:6.0.0'
+}
+
+def Properties props = new Properties()
+def propFile = new File('signing.properties')
+
+if (propFile.canRead()) {
+    props.load(new FileInputStream(propFile))
+
+    if (props != null &&
+            props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') &&
+            props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+    }
+} else {
+    println 'signing.properties not found'
+    android.buildTypes.release.signingConfig = null
+}

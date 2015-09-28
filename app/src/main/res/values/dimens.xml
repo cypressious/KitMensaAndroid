@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="ab_spinner_text_size">16dp</dimen>
+    <dimen name="horizontal_padding">4dp</dimen>
+    <dimen name="pager_margin">4dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
+
+    <dimen name="titlestrip_max_elevation">8dp</dimen>
+    <dimen name="titlestrip_max_elevation_scroll">32dp</dimen>
+    <dimen name="cow_jump">16dp</dimen>
+    <dimen name="tab_padding">16dp</dimen>
+    <dimen name="indicator_height">2dp</dimen>
+    <dimen name="circle_stroke">2dp</dimen>
+
+
+</resources>

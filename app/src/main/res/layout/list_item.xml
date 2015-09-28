@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/LinearLayout1"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:gravity="top"
+              tools:ignore="HardcodedText,ContentDescription,RtlHardcoded,RtlSymmetry"
+              android:paddingTop="8dp"
+              android:paddingBottom="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="left|center_vertical"
+        android:layout_marginBottom="2dp">
+
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/include_types"
+            android:paddingLeft="16dp"
+            android:text="a  a a aa a a a a a a aa  b b b"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:scrollHorizontally="false"
+            android:ellipsize="none"/>
+
+        <include
+            layout="@layout/layout_meal_types"
+            android:id="@+id/include_types"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/textPrice"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/textPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/horizontal_padding"
+            android:paddingRight="16dp"
+            android:text="Price"
+            android:textColor="#555555"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            android:singleLine="true"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:paddingLeft="16dp"
+            android:id="@+id/textSubName"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="SubName"
+            android:textColor="@color/dark_grey"
+            android:textSize="14sp"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
