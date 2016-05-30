@@ -1,6 +1,8 @@
 package com.cypressworks.mensaplan;
 
 import android.app.Activity;
+import android.app.backup.BackupManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -8,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -33,6 +36,13 @@ import java.util.HashSet;
  * @author Kirill Rakhman
  */
 public class HappyCowActivity extends Activity {
+
+    public static final String FILE_NAME_COLLECTED = "collected_cows";
+
+    @NonNull
+    public static File getCollectedFile(final Context c) {
+        return new File(c.getFilesDir(), FILE_NAME_COLLECTED);
+    }
 
     public static final String EXTRA_MENSA_CLASS = "EXTRA_MENSA_CLASS";
     public static final String EXTRA_DAY = "EXTRA_DAY";
@@ -66,7 +76,7 @@ public class HappyCowActivity extends Activity {
         background = findViewById(R.id.layoutBackground);
         background.setOnClickListener(v -> animateOut());
 
-        collectedFile = new File(getFilesDir(), "collected_cows");
+        collectedFile = getCollectedFile(this);
         if (collectedFile.exists()) {
             try {
                 collected = Tools.readObject(collectedFile);
@@ -202,6 +212,7 @@ public class HappyCowActivity extends Activity {
             collected.add(holder);
             try {
                 Tools.writeObject(collected, collectedFile);
+                new BackupManager(this).dataChanged();
             } catch (final IOException e) {
                 e.printStackTrace();
             }

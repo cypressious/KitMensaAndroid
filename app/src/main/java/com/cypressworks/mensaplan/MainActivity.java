@@ -1,6 +1,7 @@
 package com.cypressworks.mensaplan;
 
 import android.annotation.SuppressLint;
+import android.app.backup.BackupManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -54,7 +55,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
     private SharedPreferences prefs;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    @SuppressLint("NewApi")
+    @SuppressLint({"NewApi", "CommitPrefEdits"})
     @Override
     protected void onCreate(final Bundle arg0) {
         super.onCreate(arg0);
@@ -83,6 +84,12 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setTaskDescription();
+        }
+
+        if (!prefs.getBoolean("backed_up", false) && HappyCowActivity.getCollectedFile(
+                this).exists()) {
+            prefs.edit().putBoolean("backed_up", true).commit();
+            new BackupManager(this).dataChanged();
         }
     }
 
@@ -241,6 +248,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
     private void onMensaSelected(final int itemPosition) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(PREF_MENSA_NUM,
                                                                           itemPosition).commit();
+        new BackupManager(this).dataChanged();
 
         final Class<? extends PlanManager> managerClass = mensaAdapter.getItem(itemPosition);
 
