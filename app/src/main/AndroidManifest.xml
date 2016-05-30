@@ -25,12 +25,6 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/Theme.KitMensa">
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDgpb1qUC1xD3Ucp0ToGGq6HuQ9EMW2_dw"/>
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
 
         <activity
             android:name="com.cypressworks.mensaplan.MainActivity"
@@ -49,9 +43,6 @@
         <activity
             android:name="com.cypressworks.mensaplan.HappyCowActivity"
             android:theme="@style/Transparent"/>
-        <!--<activity-->
-        <!--android:name="com.cypressworks.mensaplan.NotificationSettingsActivity"-->
-        <!--android:label="@string/notifications" />-->
 
         <receiver
             android:name="com.cypressworks.mensaplan.MensaWidgetProvider"
@@ -79,17 +70,6 @@
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS"/>
 
-        <!--<receiver android:name="com.cypressworks.mensaplan.NotificationAlarmReceiver" />-->
-        <!--<receiver android:name="com.cypressworks.mensaplan.planmanager.AppUpdatedReceiver" >-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MY_PACKAGE_REPLACED" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
-
-        <!--<service-->
-        <!--android:name="com.cypressworks.mensaplan.GeofenceReceiverService"-->
-        <!--android:exported="false" >-->
-        <!--</service>-->
     </application>
 
 </manifest>

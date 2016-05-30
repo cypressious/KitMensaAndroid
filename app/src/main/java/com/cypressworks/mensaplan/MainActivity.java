@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
 
         viewPager = Views.findViewById(this, R.id.pager);
         viewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.pager_margin));
-        viewPager.setOnPageChangeListener(onPageChangeListener);
+        viewPager.addOnPageChangeListener(onPageChangeListener);
 
         drawerLayout = Views.findViewById(this, R.id.drawer_layout);
         listDrawer = Views.findViewById(this, R.id.left_drawer);
@@ -292,9 +292,6 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
                 return true;
             case R.id.today:
                 scrollToToday();
-                return true;
-            case R.id.notifications:
-                startActivity(new Intent(this, NotificationSettingsActivity.class));
                 return true;
         }
 

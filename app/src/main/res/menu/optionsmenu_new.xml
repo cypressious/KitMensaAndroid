@@ -9,11 +9,6 @@
         android:title="@string/today"
         yourapp:showAsAction="ifRoom|withText"/>
 
-    <!--<item-->
-    <!--android:id="@+id/notifications"-->
-    <!--android:title="@string/notifications"-->
-    <!--yourapp:showAsAction="never" />-->
-
     <item
         android:id="@+id/webcam"
         android:title="@string/webcam"
