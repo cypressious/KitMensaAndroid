@@ -221,7 +221,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
 
         };
 
-        drawerLayout.setDrawerListener(mDrawerToggle);
+        drawerLayout.addDrawerListener(mDrawerToggle);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -250,10 +250,10 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
                                                                                    managerClass);
 
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setOnPageChangeListener(null);
+        viewPager.removeOnPageChangeListener(onPageChangeListener);
         viewPager.setCurrentItem(currentPagerPosition);
         log("Setting current item: " + currentPagerPosition);
-        viewPager.setOnPageChangeListener(onPageChangeListener);
+        viewPager.addOnPageChangeListener(onPageChangeListener);
 
         if (VERSION.SDK_INT >= 11) {
             MensaWidgetProvider.updateWidgets(this);
