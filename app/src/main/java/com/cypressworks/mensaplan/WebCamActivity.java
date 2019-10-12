@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * @author Kirill Rakhman
  */
 public class WebCamActivity extends AppCompatActivity {
-    private static final String webcamURL = "http://www.studentenwerk-karlsruhe.de/de/essen/livecams/popup/?page=1";
+    private static final String webcamURL = "https://www.sw-ka.de/de/essen/livecams/popup/?page=1";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
