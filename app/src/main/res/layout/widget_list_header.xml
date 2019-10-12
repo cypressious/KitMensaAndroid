@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="4dp"
-        android:background="#e5e5e5"/>
+        android:background="#e5e5e5" />
 
     <TextView
         android:id="@+id/list_header_title"
@@ -21,7 +21,7 @@
         android:textColor="@color/accent"
         android:textSize="12sp"
         android:textStyle="bold"
-        tools:ignore="HardcodedText"/>
+        tools:ignore="HardcodedText" />
 
 
 </LinearLayout>

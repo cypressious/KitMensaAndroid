@@ -2,9 +2,6 @@ package com.cypressworks.mensaplan;
 
 import android.content.Context;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import com.cypressworks.mensaplan.food.PlanFragment;
@@ -13,6 +10,11 @@ import com.cypressworks.mensaplan.planmanager.PlanManager;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
  * @author Kirill Rakhman
@@ -42,6 +44,7 @@ class PlanFragmentPagerAdapter extends FragmentStatePagerAdapter {
         generateTitles(context);
     }
 
+    @NonNull
     @Override
     public Fragment getItem(final int position) {
 

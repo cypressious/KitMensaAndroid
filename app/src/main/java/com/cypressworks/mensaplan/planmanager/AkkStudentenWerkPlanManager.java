@@ -1,7 +1,6 @@
 package com.cypressworks.mensaplan.planmanager;
 
 import android.content.Context;
-import android.os.Build.VERSION;
 
 import com.cypressworks.mensaplan.MensaWidgetProvider;
 import com.cypressworks.mensaplan.MyApplication;
@@ -39,8 +38,8 @@ import java.util.Map;
  */
 public abstract class AkkStudentenWerkPlanManager extends PlanManager {
     protected static final String blankAKKURL = "http://mensa.akk.uni-karlsruhe.de/?DATUM=%DATE%&%KEY%=1";
-    private static final String blankStudentenwerkURL = "http://www.studentenwerk-karlsruhe.de/de/essen/?view=ok&STYLE=popup_plain&c=%KEY%&p=1&kw=%KW%";
-    private static final String studentenwerkRestURL = "http://www.studentenwerk-karlsruhe.de/de/json_interface/canteen/?mensa[]=%KEY%";
+    private static final String blankStudentenwerkURL = "https://www.sw-ka.de/de/essen/?view=ok&STYLE=popup_plain&c=%KEY%&p=1&kw=%KW%";
+    private static final String studentenwerkRestURL = "https://www.sw-ka.de/json_interface/canteen/?mensa[]=%KEY%";
 
     private static final SimpleDateFormat dayMonthFormat = new SimpleDateFormat("dd.MM",
                                                                                 Locale.GERMANY);
@@ -85,7 +84,7 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
     }
 
     @SuppressWarnings("unchecked")
-    final Plan getFromRestApi(final Calendar getDate) throws IOException, ParseException {
+    private Plan getFromRestApi(final Calendar getDate) throws IOException, ParseException {
         Plan returnPlan = null;
 
         final String key = getStudentenwerkKey();
@@ -142,14 +141,12 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
 
         }
 
-        if (VERSION.SDK_INT > 11) {
-            MensaWidgetProvider.updateWidgets(MyApplication.instance);
-        }
+        MensaWidgetProvider.updateWidgets(MyApplication.instance);
 
         return returnPlan;
     }
 
-    final Plan parseFromStudentenwerkWeb(final Calendar date) throws IOException {
+    private Plan parseFromStudentenwerkWeb(final Calendar date) throws IOException {
 
         final String weekString = String.valueOf(date.get(Calendar.WEEK_OF_YEAR));
 
@@ -208,18 +205,15 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
         // final String contentEncoding = conn.getContentEncoding();
 
         StringBuilder html = new StringBuilder();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-        try {
-            String s = null;
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()))) {
+            String s;
 
             while ((s = reader.readLine()) != null) {
                 html.append(s);
             }
 
-        } finally {
-            reader.close();
-            conn.disconnect();
         }
 
         return html.toString();

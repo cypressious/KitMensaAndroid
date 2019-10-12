@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.cypressworks.mensaplan"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          android:installLocation="auto"
-          tools:ignore="UnusedAttribute">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.cypressworks.mensaplan"
+    android:installLocation="auto"
+    tools:ignore="UnusedAttribute">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.cypressworks.mensaplan.MyApplication"
@@ -20,7 +20,7 @@
 
         <meta-data
             android:name="com.google.android.backup.api_key"
-            android:value="AEdPqrEAAAAIzN7eEn2KhmmsbKg19phQVTeb7zFBKonoWQIrJw"/>
+            android:value="AEdPqrEAAAAIzN7eEn2KhmmsbKg19phQVTeb7zFBKonoWQIrJw" />
 
         <activity
             android:name="com.cypressworks.mensaplan.MainActivity"
@@ -28,43 +28,43 @@
             android:label="@string/app_name"
             android:logo="@drawable/icon_white">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.cypressworks.mensaplan.WebCamActivity"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
         <activity
             android:name="com.cypressworks.mensaplan.HappyCowActivity"
-            android:theme="@style/Transparent"/>
+            android:theme="@style/Transparent" />
 
         <receiver
             android:name="com.cypressworks.mensaplan.MensaWidgetProvider"
-            android:enabled="@bool/widgetEnabled">
+            android:enabled="true">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/mensa_appwidget_info"/>
+                android:resource="@xml/mensa_appwidget_info" />
         </receiver>
         <receiver android:name="com.cypressworks.mensaplan.DayChangeListener">
             <intent-filter>
-                <action android:name="android.intent.action.DATE_CHANGED"/>
+                <action android:name="android.intent.action.DATE_CHANGED" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/mensa_appwidget_info"/>
+                android:resource="@xml/mensa_appwidget_info" />
         </receiver>
 
         <service
             android:name="com.cypressworks.mensaplan.MensaWidgetService"
             android:exported="false"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
     </application>
 

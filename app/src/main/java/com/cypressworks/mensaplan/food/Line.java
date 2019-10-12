@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 /**
  * Klasse, die eine Linie in einer Mensa darstellt. Verwaltet die Speisen und
  * ihre Preise.
@@ -87,15 +89,12 @@ public class Line implements Serializable, Iterable<Meal> {
             return false;
         }
         if (name == null) {
-            if (other.name != null) {
-                return false;
-            }
-        } else if (!name.equals(other.name)) {
-            return false;
-        }
-        return true;
+            return other.name == null;
+        } else
+            return name.equals(other.name);
     }
 
+    @NonNull
     @Override
     public Iterator<Meal> iterator() {
         return getMeals().iterator();

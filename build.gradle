@@ -1,20 +1,18 @@
 buildscript {
     repositories {
+        google()
+        mavenCentral()
         jcenter()
-        maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0'
-        classpath 'me.tatarka:gradle-retrolambda:3.3.0-beta4'
-        classpath 'com.github.JakeWharton:sdk-manager-plugin:220bf7a88a7072df3ed16dc8466fb144f2817070'
-        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
+        classpath 'com.android.tools.build:gradle:3.6.0-beta01'
     }
-
-    configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
 
 allprojects {
     repositories {
+        google()
+        mavenCentral()
         jcenter()
     }
     tasks.withType(JavaCompile) {

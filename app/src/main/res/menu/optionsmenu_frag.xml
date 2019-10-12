@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/reload"
         android:icon="@drawable/ic_action_refresh"
         yourapp:showAsAction="ifRoom"
         android:title="@string/reload"
-        android:orderInCategory="1">
-    </item>
+        android:orderInCategory="1" />
 
 </menu>

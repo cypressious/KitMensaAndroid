@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+
 /**
  * Klasse, die einen Speiseplan darstellt. Verwaltet Linien und ihre Gerichte.
  *
@@ -25,8 +27,6 @@ public class Plan implements Serializable, Iterable<Line> {
 
     /**
      * Erzeugt einen neuen Plan aus den gegebenen Linien.
-     *
-     * @param lines
      */
     public Plan(final List<Line> lines) {
         this.lines = lines;
@@ -73,6 +73,7 @@ public class Plan implements Serializable, Iterable<Line> {
         return (int) (diff / (1000L * 60 * 60 * 24));
     }
 
+    @NonNull
     @Override
     public Iterator<Line> iterator() {
         return getLines().iterator();

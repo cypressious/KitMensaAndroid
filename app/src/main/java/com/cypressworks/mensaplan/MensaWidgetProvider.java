@@ -39,7 +39,7 @@ public class MensaWidgetProvider extends AppWidgetProvider {
 
             PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("reload",
                                                                                      true).putBoolean(
-                    "dayChanged", true).commit();
+                    "dayChanged", true).apply();
 
             updateWidgets(context);
         } else {
@@ -47,7 +47,6 @@ public class MensaWidgetProvider extends AppWidgetProvider {
         }
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void onUpdate(
             final Context context, final AppWidgetManager appWidgetManager,
@@ -97,7 +96,7 @@ public class MensaWidgetProvider extends AppWidgetProvider {
     public static void updateWidgets(final Context c) {
 
         final AppWidgetManager widgetManager = AppWidgetManager.getInstance(c);
-        final int ids[] = widgetManager.getAppWidgetIds(
+        final int[] ids = widgetManager.getAppWidgetIds(
                 new ComponentName(c, MensaWidgetProvider.class));
 
         final Intent intent = new Intent(c, MensaWidgetProvider.class);

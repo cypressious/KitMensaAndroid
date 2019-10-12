@@ -1,6 +1,4 @@
-apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
 
@@ -12,14 +10,13 @@ android {
 
     defaultConfig {
         applicationId 'com.cypressworks.mensaplan'
-        minSdkVersion 9
-        targetSdkVersion 23
+        minSdkVersion 14
+        targetSdkVersion 29
         versionCode 25
         versionName "2.2.1"
     }
 
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 29
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -46,15 +43,14 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'org.jsoup:jsoup:1.7.3'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile files('libs/json-simple.jar')
-    compile 'com.jakewharton:butterknife:6.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'org.jsoup:jsoup:1.7.3'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation files('libs/json-simple.jar')
 }
 
-def Properties props = new Properties()
+def props = new Properties()
 def propFile = new File('signing.properties')
 
 if (propFile.canRead()) {

@@ -19,8 +19,8 @@ public class RangeTimePickerDialog extends TimePickerDialog {
     private int maxHour = 25;
     private int maxMinute = 25;
 
-    private int currentHour = 0;
-    private int currentMinute = 0;
+    private int currentHour;
+    private int currentMinute;
 
     private Calendar calendar = Calendar.getInstance();
     private DateFormat dateFormat;

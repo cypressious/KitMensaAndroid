@@ -10,16 +10,8 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.view.PagerTitleStrip;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -37,10 +29,19 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import java.io.File;
 import java.util.Calendar;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.PagerTitleStrip;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+
 /**
  * @author Kirill Rakhman
  */
-public class MainActivity extends ActionBarActivity implements ScrollListener {
+public class MainActivity extends AppCompatActivity implements ScrollListener {
 
     public static final String PREF_MENSA_NUM = "pref_mensa_num";
     public static final String PACKAGE_WEAR = "com.google.android.wearable.app";
@@ -88,7 +89,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
 
         if (!prefs.getBoolean("backed_up", false) && HappyCowActivity.getCollectedFile(
                 this).exists()) {
-            prefs.edit().putBoolean("backed_up", true).commit();
+            prefs.edit().putBoolean("backed_up", true).apply();
             new BackupManager(this).dataChanged();
         }
     }
@@ -126,7 +127,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
     }
 
     @Override
-    public void onConfigurationChanged(final Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull final Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
@@ -247,7 +248,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
 
     private void onMensaSelected(final int itemPosition) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putInt(PREF_MENSA_NUM,
-                                                                          itemPosition).commit();
+                                                                          itemPosition).apply();
         new BackupManager(this).dataChanged();
 
         final Class<? extends PlanManager> managerClass = mensaAdapter.getItem(itemPosition);
@@ -263,9 +264,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
         log("Setting current item: " + currentPagerPosition);
         viewPager.addOnPageChangeListener(onPageChangeListener);
 
-        if (VERSION.SDK_INT >= 11) {
-            MensaWidgetProvider.updateWidgets(this);
-        }
+        MensaWidgetProvider.updateWidgets(this);
 
         getSupportActionBar().setTitle(mensaAdapter.getName(itemPosition));
     }
@@ -286,7 +285,7 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
     }
 
     @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
@@ -345,8 +344,9 @@ public class MainActivity extends ActionBarActivity implements ScrollListener {
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
-    protected void onSaveInstanceState(final Bundle outState) {
+    protected void onSaveInstanceState(@NonNull final Bundle outState) {
         // Verhinden, dass der ViewPager seine Position speichern. Wir wollen
         // immer bei heute beginnen.
     }

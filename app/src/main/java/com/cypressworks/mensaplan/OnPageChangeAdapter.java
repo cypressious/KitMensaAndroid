@@ -1,6 +1,6 @@
 package com.cypressworks.mensaplan;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 /**
  * @author Kirill Rakhman

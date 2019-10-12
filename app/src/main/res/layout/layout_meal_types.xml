@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              tools:showIn="@layout/list_item"
-              android:layout_height="wrap_content"
-              android:layout_width="wrap_content">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    tools:showIn="@layout/list_item"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
 
     <ImageView
         android:id="@+id/imageBio"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_meal_bio"/>
+        android:src="@drawable/ic_meal_bio" />
 
     <ImageView
         android:id="@+id/imageFish"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_meal_fish"/>
+        android:src="@drawable/ic_meal_fish" />
 
     <ImageView
         android:id="@+id/imagePork"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_meal_pork"/>
+        android:src="@drawable/ic_meal_pork" />
 
     <ImageView
         android:id="@+id/imageCow"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_meal_cow"/>
+        android:src="@drawable/ic_meal_cow" />
 
     <ImageView
         android:id="@+id/imageCow_aw"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_meal_cow_aw"/>
+        android:src="@drawable/ic_meal_cow_aw" />
 
     <ImageView
         android:id="@+id/imageVegan"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_marginLeft="8dp"
-        android:src="@drawable/ic_meal_vegan"/>
+        android:src="@drawable/ic_meal_vegan" />
 
     <ImageView
         android:id="@+id/imageVeg"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:src="@drawable/ic_meal_veg"
-        android:layout_marginLeft="8dp"/>
+        android:layout_marginLeft="8dp" />
 </LinearLayout>

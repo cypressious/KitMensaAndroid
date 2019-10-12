@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public abstract class PlanManager {
 
-    private static interface PlanManagerFactory {
+    private interface PlanManagerFactory {
         PlanManager create(Context c);
     }
 
@@ -46,7 +46,7 @@ public abstract class PlanManager {
 
     }
 
-    public static enum RelativeDate {
+    public enum RelativeDate {
         PAST, TODAY, FUTURE
     }
 

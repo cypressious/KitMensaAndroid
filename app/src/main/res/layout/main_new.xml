@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                        android:id="@+id/drawer_layout"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent">
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v4.view.UnderlinePagerTitleStrip
+            <androidx.viewpager.widget.UnderlinePagerTitleStrip
                 android:id="@+id/titleStrip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="4dp"
-                android:textColor="#ffffff"
-                android:paddingBottom="4dp"
                 android:background="@color/primary"
                 android:clipToPadding="false"
-                android:elevation="8dp"/>
-        </android.support.v4.view.ViewPager>
+                android:elevation="8dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="4dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="4dp"
+                android:textColor="#ffffff"
+                tools:targetApi="lollipop" />
+        </androidx.viewpager.widget.ViewPager>
 
 
     </LinearLayout>
@@ -38,6 +40,6 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:choiceMode="singleChoice"
-        android:background="#ffffff"/>
-</android.support.v4.widget.DrawerLayout>
+        android:background="#ffffff"
+        android:choiceMode="singleChoice" />
+</androidx.drawerlayout.widget.DrawerLayout>

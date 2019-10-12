@@ -10,7 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -31,6 +30,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
+
+import androidx.annotation.NonNull;
 
 /**
  * @author Kirill Rakhman
@@ -121,7 +122,6 @@ public class HappyCowActivity extends Activity {
         final ViewTreeObserver observer = layout.getViewTreeObserver();
         observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 
-            @SuppressWarnings("deprecation")
             @Override
             public boolean onPreDraw() {
                 layout.getViewTreeObserver().removeOnPreDrawListener(this);

@@ -16,7 +16,7 @@ public class DayChangeListener extends BroadcastReceiver {
         MensaWidgetProvider.updateWidgets(context);
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        prefs.edit().putBoolean("dayChanged", true).commit();
+        prefs.edit().putBoolean("dayChanged", true).apply();
     }
 
 }

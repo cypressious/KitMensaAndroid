@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="ab_spinner_text_size">20dp</dimen>
+    <dimen name="ab_spinner_text_size">20sp</dimen>
     <dimen name="horizontal_padding">8dp</dimen>
     <dimen name="pager_margin">8dp</dimen>
 

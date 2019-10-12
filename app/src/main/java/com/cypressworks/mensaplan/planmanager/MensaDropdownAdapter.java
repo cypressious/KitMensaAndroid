@@ -71,7 +71,6 @@ public class MensaDropdownAdapter extends BaseAdapter implements
         return position;
     }
 
-    @SuppressWarnings("rawtypes")
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
         return makeLayout(position, convertView, parent, R.layout.textview_drawer);

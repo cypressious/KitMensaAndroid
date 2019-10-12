@@ -7,8 +7,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -24,7 +22,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.cypressworks.mensaplan.AndroidV11Helper;
 import com.cypressworks.mensaplan.BuildConfig;
 import com.cypressworks.mensaplan.HappyCowActivity;
 import com.cypressworks.mensaplan.R;
@@ -36,6 +33,10 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
 import java.util.Calendar;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 
 /**
  * @author Kirill Rakhman
@@ -73,7 +74,7 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
 
     @Override
     public View onCreateView(
-            final LayoutInflater inflater, final ViewGroup container,
+            @NonNull final LayoutInflater inflater, final ViewGroup container,
             final Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
 
@@ -85,17 +86,16 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
     }
 
     @Override
-    public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull final Menu menu, final MenuInflater inflater) {
         inflater.inflate(R.menu.optionsmenu_frag, menu);
         menuReload = menu.findItem(R.id.reload);
     }
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.reload:
-                new PopulateListTask(getActivity(), date, true).execute();
-                return true;
+        if (item.getItemId() == R.id.reload) {
+            new PopulateListTask(getActivity(), date, true).execute();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -103,9 +103,9 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void onViewCreated(final View view, final Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final Context c = getActivity();
+        final Context c = requireActivity();
 
         listView = getListView();
         //		listView.setSelector(R.drawable.list_selector);
@@ -142,7 +142,7 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
 
     @Override
     public void onCreateContextMenu(
-            final ContextMenu menu, final View v, final ContextMenuInfo menuInfo) {
+            @NonNull final ContextMenu menu, @NonNull final View v, final ContextMenuInfo menuInfo) {
         final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
         // Gericht, auf das geklickt wurde
@@ -155,7 +155,7 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
         final Meal m = (Meal) itemAtPosition;
 
         // Contextmenü aus xml
-        final android.view.MenuInflater inflater = getActivity().getMenuInflater();
+        final android.view.MenuInflater inflater = requireActivity().getMenuInflater();
         inflater.inflate(R.menu.mealcontextmenu, menu);
 
         // Titel des Menüs ist Name des Gerichts
@@ -165,7 +165,7 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
     }
 
     @Override
-    public boolean onContextItemSelected(final android.view.MenuItem item) {
+    public boolean onContextItemSelected(@NonNull final android.view.MenuItem item) {
         if (this != contextMenuFrag) {
             return true;
         }
@@ -253,8 +253,8 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
 
         @Override
         protected void onPreExecute() {
-            if (VERSION.SDK_INT >= 11) {
-                AndroidV11Helper.setActionView(menuReload, R.layout.actionitem_progress);
+            if (menuReload != null) {
+                menuReload.setActionView(R.layout.actionitem_progress);
             }
 
             final Plan cachedPlan = planManager.getPlanFromCache(date);
@@ -276,8 +276,8 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
         protected void onPostExecute(final ListAdapter result) {
             setListAdapter(result);
 
-            if (VERSION.SDK_INT >= 11) {
-                AndroidV11Helper.setActionView(menuReload, null);
+            if (menuReload != null) {
+                menuReload.setActionView(null);
             }
         }
     }
@@ -297,7 +297,7 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
             final Meal meal = (Meal) item;
 
             if (meal.isCow_aw()) {
-                final Activity activity = getActivity();
+                final Activity activity = requireActivity();
 
                 final Intent i = new Intent(activity, HappyCowActivity.class);
                 i.putExtra(HappyCowActivity.EXTRA_MENSA_CLASS, managerClass);

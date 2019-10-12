@@ -143,7 +143,7 @@ class PlanAdapter extends BaseAdapter {
         final TextView name;
 
         HeaderHolder(final View v) {
-            name = (TextView) v.findViewById(R.id.list_header_title);
+            name = v.findViewById(R.id.list_header_title);
         }
     }
 
@@ -156,17 +156,17 @@ class PlanAdapter extends BaseAdapter {
 
         ItemHolder(final View v) {
             layout = v;
-            name = (TextView) v.findViewById(R.id.textName);
-            subName = (TextView) v.findViewById(R.id.textSubName);
-            price = (TextView) v.findViewById(R.id.textPrice);
+            name = v.findViewById(R.id.textName);
+            subName = v.findViewById(R.id.textSubName);
+            price = v.findViewById(R.id.textPrice);
 
-            bio = (ImageView) v.findViewById(R.id.imageBio);
-            fish = (ImageView) v.findViewById(R.id.imageFish);
-            pork = (ImageView) v.findViewById(R.id.imagePork);
-            cow = (ImageView) v.findViewById(R.id.imageCow);
-            cow_aw = (ImageView) v.findViewById(R.id.imageCow_aw);
-            vegan = (ImageView) v.findViewById(R.id.imageVegan);
-            veg = (ImageView) v.findViewById(R.id.imageVeg);
+            bio = v.findViewById(R.id.imageBio);
+            fish = v.findViewById(R.id.imageFish);
+            pork = v.findViewById(R.id.imagePork);
+            cow = v.findViewById(R.id.imageCow);
+            cow_aw = v.findViewById(R.id.imageCow_aw);
+            vegan = v.findViewById(R.id.imageVegan);
+            veg = v.findViewById(R.id.imageVeg);
         }
     }
 }

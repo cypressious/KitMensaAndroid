@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          style="?android:attr/spinnerItemStyle"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:ellipsize="end"
-          android:maxLines="2"
-          android:textAlignment="inherit"
-          android:textColor="#ffffff"
-          android:textSize="@dimen/ab_spinner_text_size"
-          tools:ignore="SpUsage"/>
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?android:attr/spinnerItemStyle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:maxLines="2"
+    android:textAlignment="inherit"
+    android:textColor="#ffffff"
+    android:textSize="@dimen/ab_spinner_text_size"
+    tools:ignore="SpUsage" />
