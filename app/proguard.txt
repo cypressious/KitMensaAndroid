@@ -1,3 +1,5 @@
+-dontobfuscate
+
 -keep public class * extends com.cypressworks.mensaplan.planmanager.PlanManager
 
 -dontwarn java.lang.invoke**
