@@ -21,9 +21,12 @@ public class AdenauerPlanManager extends AkkStudentenWerkPlanManager {
         lineNames.put("schnitzelbar", "Schnitzelbar");
         lineNames.put("update", "L6 Update");
         lineNames.put("abend", "Abend");
-        lineNames.put("aktion", "Curry Queen");
+        lineNames.put("aktion", "[kœri]werk");
         lineNames.put("heisstheke", "Cafeteria Heiße Theke");
         lineNames.put("nmtisch", "Cafeteria ab 14:30");
+        lineNames.put("pizza", "[pizza]werk Pizza");
+        lineNames.put("pasta", "[pizza]werk Pasta");
+        lineNames.put("salat_dessert", "[pizza]werk Salate / Vorspeisen");
     }
 
     public AdenauerPlanManager(final Context c) {

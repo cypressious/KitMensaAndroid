@@ -16,6 +16,7 @@ public class ErzbergerPlanManager extends AkkStudentenWerkPlanManager {
     static {
         lineNames.put("wahl1", "Wahlessen 1");
         lineNames.put("wahl2", "Wahlessen 2");
+        lineNames.put("wahl3", "Wahlessen 3");
     }
 
     @Override
