@@ -23,7 +23,4 @@
     <color name="transparent_blue">#555677fc</color>
     <color name="blue">#5677fc</color>
     <color name="dark_grey">#555555</color>
-
-    <color name="transparent_green">#804CAF50</color>
-    <color name="transparent_red">#80E65100</color>
 </resources>

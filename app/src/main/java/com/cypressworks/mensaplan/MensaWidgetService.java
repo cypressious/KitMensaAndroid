@@ -12,12 +12,9 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import androidx.core.content.ContextCompat;
 import com.cypressworks.mensaplan.food.Line;
 import com.cypressworks.mensaplan.food.Meal;
 import com.cypressworks.mensaplan.food.Plan;
-import com.cypressworks.mensaplan.food.likes.LikeManager;
-import com.cypressworks.mensaplan.food.likes.LikeStatus;
 import com.cypressworks.mensaplan.planmanager.MensaDropdownAdapter;
 import com.cypressworks.mensaplan.planmanager.PlanManager;
 import com.cypressworks.mensaplan.util.StringUtils;
@@ -41,12 +38,10 @@ public class MensaWidgetService extends RemoteViewsService {
         private final Context c;
         private List<Object> items;
         private final SharedPreferences prefs;
-        private final LikeManager likeManager;
 
         MensaRemoteViewsFactory(final Context c) {
             this.c = c;
             this.prefs = PreferenceManager.getDefaultSharedPreferences(c);
-            likeManager = new LikeManager(c);
         }
 
         @Override
@@ -133,21 +128,7 @@ public class MensaWidgetService extends RemoteViewsService {
                     rv.setViewVisibility(R.id.imageVegan,
                                          meal.isVegan() ? View.VISIBLE : View.GONE);
                     rv.setViewVisibility(R.id.imageVeg, meal.isVeg() ? View.VISIBLE : View.GONE);
-                    switch (likeManager.getLikeStatus(meal.getMeal())) {
-                        case LikeStatus.LIKED: {
-                            rv.setInt(R.id.textName, "setBackgroundColor", ContextCompat.getColor(c, R.color.transparent_green));
-                            break;
-                        }
-                        case LikeStatus.DISLIKED: {
-                            rv.setInt(R.id.textName, "setBackgroundColor", ContextCompat.getColor(c, R.color.transparent_red));
-                            break;
-                        }
-                        case LikeStatus.NO_LIKE_INFO: {
-                            rv.setInt(R.id.textName, "setBackgroundColor", Color.TRANSPARENT);
-                            break;
-                        }
-                        default:
-                    }
+
                 } else {
                     throw new AssertionError();
                 }
