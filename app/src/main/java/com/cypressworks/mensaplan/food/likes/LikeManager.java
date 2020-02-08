@@ -38,8 +38,6 @@ public class LikeManager {
     }
 
     private void putLikeState(String meal, @LikeStatus int likeStatus) {
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(meal, likeStatus);
-        editor.apply();
+        prefs.edit().putInt(meal, likeStatus).apply();
     }
 }
