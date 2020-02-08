@@ -1,14 +1,19 @@
 package com.cypressworks.mensaplan.food;
 
+import android.app.backup.BackupManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cypressworks.mensaplan.food.likes.LikeManager;
 import com.cypressworks.mensaplan.R;
+import com.cypressworks.mensaplan.food.likes.LikeStatus;
 import com.cypressworks.mensaplan.util.StringUtils;
 
 import java.util.ArrayList;
@@ -23,6 +28,8 @@ class PlanAdapter extends BaseAdapter {
 
     private final Context c;
 
+    private final LikeManager likeManager;
+
     private final List<Object> items;
     private final int[] types;
 
@@ -30,7 +37,7 @@ class PlanAdapter extends BaseAdapter {
 
     public PlanAdapter(final Context context, final Plan plan) {
         this.c = context;
-
+        likeManager = new LikeManager(context);
         items = new ArrayList<>();
         types = new int[plan.getTotalItemsCount()];
         int index = 0;
@@ -80,6 +87,7 @@ class PlanAdapter extends BaseAdapter {
             tag.subName.setVisibility("".equals(dish) ? View.GONE : View.VISIBLE);
 
             tag.price.setText(meal.getPrice());
+            tag.likeButton.setVisibility(View.VISIBLE);
 
             tag.bio.setVisibility(meal.isBio() ? View.VISIBLE : View.GONE);
             tag.fish.setVisibility(meal.isFish() ? View.VISIBLE : View.GONE);
@@ -88,6 +96,7 @@ class PlanAdapter extends BaseAdapter {
             tag.cow_aw.setVisibility(meal.isCow_aw() ? View.VISIBLE : View.GONE);
             tag.vegan.setVisibility(meal.isVegan() ? View.VISIBLE : View.GONE);
             tag.veg.setVisibility(meal.isVeg() ? View.VISIBLE : View.GONE);
+            tag.updateBackground();
 
             //            if (position % 2 == 1) {
             //                tag.layout.setBackgroundColor(Color.LTGRAY);
@@ -147,11 +156,12 @@ class PlanAdapter extends BaseAdapter {
         }
     }
 
-    private static class ItemHolder {
+    private class ItemHolder {
         final TextView name;
         final TextView subName;
         final TextView price;
         final ImageView bio, fish, pork, cow, cow_aw, vegan, veg;
+        final ImageButton likeButton;
         final View layout;
 
         ItemHolder(final View v) {
@@ -159,7 +169,12 @@ class PlanAdapter extends BaseAdapter {
             name = v.findViewById(R.id.textName);
             subName = v.findViewById(R.id.textSubName);
             price = v.findViewById(R.id.textPrice);
-
+            likeButton = v.findViewById(R.id.buttonLikeStatus);
+            likeButton.setOnClickListener(view -> {
+                toggleLikeButton();
+                updateBackground();
+                (new BackupManager(v.getContext())).dataChanged();
+            });
             bio = v.findViewById(R.id.imageBio);
             fish = v.findViewById(R.id.imageFish);
             pork = v.findViewById(R.id.imagePork);
@@ -167,6 +182,34 @@ class PlanAdapter extends BaseAdapter {
             cow_aw = v.findViewById(R.id.imageCow_aw);
             vegan = v.findViewById(R.id.imageVegan);
             veg = v.findViewById(R.id.imageVeg);
+        }
+
+        private void toggleLikeButton() {
+            likeManager.toggle(name.getText().toString());
+        }
+
+        private void updateBackground() {
+            switch (likeManager.getLikeStatus(name.getText().toString())) {
+                case LikeStatus.LIKED: {
+                    likeButton.setImageResource(R.drawable.thumbs_up);
+                    layout.setBackgroundColor(layout.getContext().getResources().getColor(R.color.transparent_green));
+                    likeButton.setColorFilter(Color.GREEN);
+                    break;
+                }
+                case LikeStatus.DISLIKED: {
+                    likeButton.setImageResource(R.drawable.thumbs_down);
+                    layout.setBackgroundColor(layout.getContext().getResources().getColor(R.color.transparent_red));
+                    likeButton.setColorFilter(Color.RED);
+                    break;
+                }
+                case LikeStatus.NO_LIKE_INFO: {
+                    likeButton.setImageResource(R.drawable.thumbs_undecided);
+                    layout.setBackgroundColor(Color.TRANSPARENT);
+                    likeButton.setColorFilter(Color.WHITE);
+                    break;
+                }
+                default:
+            }
         }
     }
 }
