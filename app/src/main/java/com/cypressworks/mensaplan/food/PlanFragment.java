@@ -57,7 +57,6 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
         return planFragment;
     }
 
-    private static Fragment contextMenuFrag;
     private Class<? extends PlanManager> managerClass;
     private Calendar date;
     private PlanManager planManager;
@@ -160,15 +159,10 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
 
         // Titel des Menüs ist Name des Gerichts
         menu.setHeaderTitle(m.getName());
-
-        contextMenuFrag = this;
     }
 
     @Override
     public boolean onContextItemSelected(@NonNull final android.view.MenuItem item) {
-        if (this != contextMenuFrag) {
-            return true;
-        }
 
         final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         String url;
