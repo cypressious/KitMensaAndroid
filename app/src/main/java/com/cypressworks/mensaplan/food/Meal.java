@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public class Meal implements Serializable {
 
+    public static final String NO_MEAL = "Linie geschlossen";
+
     private static final long serialVersionUID = -6729670284326867259L;
     private final String meal;
     private final String dish;
@@ -21,6 +23,7 @@ public class Meal implements Serializable {
     private boolean cow_aw = false;
     private boolean vegan = false;
     private boolean veg = false;
+    private boolean likeable = true;
 
     public Meal(final String meal, final String dish, final String price) {
         super();
@@ -114,4 +117,11 @@ public class Meal implements Serializable {
         return serialVersionUID;
     }
 
+    public void setLikeable(final boolean likeable) {
+        this.likeable = likeable;
+    }
+
+    public boolean isLikeable() {
+        return likeable;
+    }
 }

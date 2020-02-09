@@ -114,16 +114,21 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
                     if (price_1 != null) {
                         price += " " + priceFormat.format(price_1).replace(".", ",").trim();
                     }
-                    final Meal meal = new Meal(mealObject.optString("meal"),
-                                               mealObject.optString("dish"), price);
-
-                    meal.setBio(mealObject.optBoolean("bio"));
-                    meal.setFish(mealObject.optBoolean("fish"));
-                    meal.setPork(mealObject.optBoolean("pork"));
-                    meal.setCow(mealObject.optBoolean("cow"));
-                    meal.setCow_aw(mealObject.optBoolean("cow_aw"));
-                    meal.setVegan(mealObject.optBoolean("vegan"));
-                    meal.setVeg(mealObject.optBoolean("veg"));
+                    final String mealName = mealObject.optString("meal");
+                    final Meal meal;
+                    if ("".equals(mealName)) {
+                        meal = new Meal(Meal.NO_MEAL, "", "");
+                        meal.setLikeable(false);
+                    } else {
+                        meal = new Meal(mealObject.optString("meal"), mealObject.optString("dish"), price);
+                        meal.setBio(mealObject.optBoolean("bio"));
+                        meal.setFish(mealObject.optBoolean("fish"));
+                        meal.setPork(mealObject.optBoolean("pork"));
+                        meal.setCow(mealObject.optBoolean("cow"));
+                        meal.setCow_aw(mealObject.optBoolean("cow_aw"));
+                        meal.setVegan(mealObject.optBoolean("vegan"));
+                        meal.setVeg(mealObject.optBoolean("veg"));
+                    }
 
                     line.addMeal(meal);
                 }

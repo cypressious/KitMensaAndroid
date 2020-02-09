@@ -87,7 +87,11 @@ class PlanAdapter extends BaseAdapter {
             tag.subName.setVisibility("".equals(dish) ? View.GONE : View.VISIBLE);
 
             tag.price.setText(meal.getPrice());
-            tag.likeButton.setVisibility(View.VISIBLE);
+            if (meal.isLikeable()) {
+                tag.likeButton.setVisibility(View.VISIBLE);
+            } else {
+                tag.likeButton.setVisibility(View.INVISIBLE);
+            }
 
             tag.bio.setVisibility(meal.isBio() ? View.VISIBLE : View.GONE);
             tag.fish.setVisibility(meal.isFish() ? View.VISIBLE : View.GONE);

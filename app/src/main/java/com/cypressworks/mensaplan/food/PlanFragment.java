@@ -153,6 +153,10 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
 
         final Meal m = (Meal) itemAtPosition;
 
+        if (Meal.NO_MEAL.equals(m.getMeal())) {
+            return;
+        }
+
         // Contextmenü aus xml
         final android.view.MenuInflater inflater = requireActivity().getMenuInflater();
         inflater.inflate(R.menu.mealcontextmenu, menu);
