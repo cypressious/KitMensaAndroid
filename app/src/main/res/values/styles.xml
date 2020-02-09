@@ -11,7 +11,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.KitMensa" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.KitMensa" parent="Theme.AppCompat.DayNight">
         <!--<item name="actionBarStyle">@style/MyActionBarStyle</item>-->
 
         <item name="colorPrimary">@color/primary</item>

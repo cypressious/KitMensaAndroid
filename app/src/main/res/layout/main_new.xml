@@ -28,7 +28,6 @@
                 android:paddingTop="4dp"
                 android:paddingRight="16dp"
                 android:paddingBottom="4dp"
-                android:textColor="#ffffff"
                 tools:targetApi="lollipop" />
         </androidx.viewpager.widget.ViewPager>
 
@@ -40,6 +39,6 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:background="#ffffff"
+        android:background="?android:colorBackground"
         android:choiceMode="singleChoice" />
 </androidx.drawerlayout.widget.DrawerLayout>
