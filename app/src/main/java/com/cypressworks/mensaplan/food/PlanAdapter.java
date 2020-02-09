@@ -205,7 +205,7 @@ class PlanAdapter extends BaseAdapter {
                 case LikeStatus.NO_LIKE_INFO: {
                     likeButton.setImageResource(R.drawable.thumbs_undecided);
                     layout.setBackgroundColor(Color.TRANSPARENT);
-                    likeButton.setColorFilter(Color.WHITE);
+                    likeButton.setColorFilter(layout.getContext().getResources().getColor(R.color.dark_grey));
                     break;
                 }
                 default:
