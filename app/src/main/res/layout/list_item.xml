@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        android:id="@+id/LinearLayout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:descendantFocusability="blocksDescendants"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        tools:ignore="HardcodedText,ContentDescription,RtlHardcoded,RtlSymmetry"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:gravity="top">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="top"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    tools:ignore="HardcodedText,ContentDescription,RtlHardcoded,RtlSymmetry">
 
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_toLeftOf="@id/buttonLikeStatus">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/buttonLikeStatus"
+        android:orientation="vertical">
 
         <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:gravity="left|center_vertical"
-                android:layout_marginBottom="2dp">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                    android:id="@+id/textName"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@+id/include_types"
-                    android:paddingLeft="16dp"
-                    android:text="a  a a aa a a a a a a aa  b b b"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:scrollHorizontally="false"
-                    android:ellipsize="none" />
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/include_types"
+                android:ellipsize="none"
+                android:paddingLeft="16dp"
+                android:scrollHorizontally="false"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:text="a  a a aa a a a a a a aa  b b b" />
 
             <include
-                    layout="@layout/layout_meal_types"
-                    android:id="@+id/include_types"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@+id/textPrice"
-                    android:layout_marginTop="2dp" />
+                android:id="@+id/include_types"
+                layout="@layout/layout_meal_types"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="2dp"
+                android:layout_toLeftOf="@+id/textPrice" />
 
             <TextView
-                    android:id="@+id/textPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="0dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:paddingLeft="@dimen/horizontal_padding"
-                    android:paddingRight="16dp"
-                    android:text="Price"
-                    android:textColor="#555555"
-                    android:textStyle="italic"
-                    android:textSize="16sp"
-                    android:singleLine="true" />
+                android:id="@+id/textPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="0dp"
+                android:paddingLeft="@dimen/horizontal_padding"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:textColor="#555555"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                tools:text="Price" />
 
         </RelativeLayout>
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingRight="16dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="16dp">
 
             <TextView
-                    android:paddingLeft="16dp"
-                    android:id="@+id/textSubName"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:text="SubName"
-                    android:textColor="@color/dark_grey"
-                    android:textSize="14sp" />
+                android:id="@+id/textSubName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:textColor="@color/dark_grey"
+                android:textSize="14sp"
+                tools:text="SubName" />
 
 
         </LinearLayout>
@@ -87,11 +87,11 @@
     </LinearLayout>
 
     <ImageButton
-            android:id="@+id/buttonLikeStatus"
-            android:src="@drawable/thumbs_undecided"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-            android:layout_marginTop="0dp"
-            android:layout_alignParentRight="true"/>
+        android:id="@+id/buttonLikeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/thumbs_undecided" />
 </RelativeLayout>
