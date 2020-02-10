@@ -73,6 +73,14 @@ public class Plan implements Serializable, Iterable<Line> {
         return (int) (diff / (1000L * 60 * 60 * 24));
     }
 
+    public Line getFirstLine() {
+        if (lines.size() > 0) {
+            return lines.get(0);
+        } else {
+            return null;
+        }
+    }
+
     @NonNull
     @Override
     public Iterator<Line> iterator() {
