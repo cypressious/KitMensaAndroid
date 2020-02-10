@@ -33,6 +33,7 @@ class PlanAdapter extends BaseAdapter {
     private final List<Object> items;
     private final int[] types;
 
+    private static final String FIRST_LINE_NAME = "Linie 1";
     private static final int TYPE_LINE = 0, TYPE_MEAL = 1;
 
     public PlanAdapter(final Context context, final Plan plan) {
@@ -67,6 +68,9 @@ class PlanAdapter extends BaseAdapter {
                 tag = (HeaderHolder) v.getTag();
             }
             final Line line = (Line) items.get(position);
+            if (FIRST_LINE_NAME.equals(line.getName())) {
+                tag.separator.setVisibility(View.INVISIBLE);
+            }
             tag.name.setText(line.getName());
         } else {
             // Item
@@ -149,9 +153,11 @@ class PlanAdapter extends BaseAdapter {
     }
 
     private static class HeaderHolder {
+        final View separator;
         final TextView name;
 
         HeaderHolder(final View v) {
+            separator = v.findViewById(R.id.list_header_separator);
             name = v.findViewById(R.id.list_header_title);
         }
     }

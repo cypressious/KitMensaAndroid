@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <View
+        android:id="@+id/list_header_separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="20dp"
