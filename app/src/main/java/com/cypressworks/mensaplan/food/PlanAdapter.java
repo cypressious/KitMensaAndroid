@@ -32,7 +32,6 @@ class PlanAdapter extends BaseAdapter {
 
     private final List<Object> items;
     private final int[] types;
-    private final String firstLineName;
 
     private static final int TYPE_LINE = 0, TYPE_MEAL = 1;
 
@@ -42,12 +41,6 @@ class PlanAdapter extends BaseAdapter {
         items = new ArrayList<>();
         types = new int[plan.getTotalItemsCount()];
         int index = 0;
-        Line firstLine = plan.getFirstLine();
-        if (firstLine != null) {
-            firstLineName = plan.getFirstLine().getName();
-        } else {
-            firstLineName = "";
-        }
         for (final Line line : plan) {
             items.add(line);
             types[index++] = TYPE_LINE;
@@ -74,8 +67,10 @@ class PlanAdapter extends BaseAdapter {
                 tag = (HeaderHolder) v.getTag();
             }
             final Line line = (Line) items.get(position);
-            if (firstLineName.equals(line.getName())) {
+            if (position == 0) {
                 tag.separator.setVisibility(View.INVISIBLE);
+            } else {
+                tag.separator.setVisibility(View.VISIBLE);
             }
             tag.name.setText(line.getName());
         } else {
