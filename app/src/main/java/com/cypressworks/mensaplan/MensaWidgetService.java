@@ -134,15 +134,15 @@ public class MensaWidgetService extends RemoteViewsService {
                     rv.setViewVisibility(R.id.imageVeg, meal.isVeg() ? View.VISIBLE : View.GONE);
                     switch (likeManager.getLikeStatus(meal.getMeal())) {
                         case LikeStatus.LIKED: {
-                            rv.setInt(R.id.textName, "setBackgroundColor", ContextCompat.getColor(c, R.color.transparent_green));
+                            rv.setInt(R.id.LinearLayout1, "setBackgroundColor", ContextCompat.getColor(c, R.color.transparent_green));
                             break;
                         }
                         case LikeStatus.DISLIKED: {
-                            rv.setInt(R.id.textName, "setBackgroundColor", ContextCompat.getColor(c, R.color.transparent_red));
+                            rv.setInt(R.id.LinearLayout1, "setBackgroundColor", ContextCompat.getColor(c, R.color.transparent_red));
                             break;
                         }
                         case LikeStatus.NO_LIKE_INFO: {
-                            rv.setInt(R.id.textName, "setBackgroundColor", Color.TRANSPARENT);
+                            rv.setInt(R.id.LinearLayout1, "setBackgroundColor", Color.TRANSPARENT);
                             break;
                         }
                         default:
