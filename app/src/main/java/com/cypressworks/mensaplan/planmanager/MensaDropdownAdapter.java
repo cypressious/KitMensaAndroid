@@ -2,8 +2,10 @@ package com.cypressworks.mensaplan.planmanager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,9 +86,12 @@ public class MensaDropdownAdapter extends BaseAdapter implements
         } else {
             tv = (TextView) LayoutInflater.from(context).inflate(layout, parent, false);
         }
-
         tv.setText(getName(position));
-        tv.setTextColor(position == selectedMensa ? accentColor : Color.BLACK);
+        if (position == selectedMensa) {
+            tv.setTextColor(accentColor);
+        } else {
+            tv.setTextColor(primaryTextColor());
+        }
 
         return tv;
     }
@@ -102,5 +107,17 @@ public class MensaDropdownAdapter extends BaseAdapter implements
             selectedMensa = prefs.getInt(MainActivity.PREF_MENSA_NUM, 0);
             notifyDataSetChanged();
         }
+    }
+
+    private int primaryTextColor() {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(android.R.attr.textColorPrimary, typedValue, true);
+        TypedArray arr =
+                context.obtainStyledAttributes(typedValue.data, new int[]{
+                        android.R.attr.textColorPrimary});
+        int primaryColor = arr.getColor(0, -1);
+        arr.recycle();
+        return primaryColor;
     }
 }

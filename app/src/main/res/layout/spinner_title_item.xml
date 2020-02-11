@@ -7,6 +7,5 @@
     android:ellipsize="end"
     android:maxLines="2"
     android:textAlignment="inherit"
-    android:textColor="#ffffff"
     android:textSize="@dimen/ab_spinner_text_size"
     tools:ignore="SpUsage" />

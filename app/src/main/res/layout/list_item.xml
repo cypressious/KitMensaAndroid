@@ -26,6 +26,7 @@
 
             <TextView
                 android:id="@+id/textName"
+                android:textColor="?android:textColorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -34,7 +35,6 @@
                 android:ellipsize="none"
                 android:paddingLeft="16dp"
                 android:scrollHorizontally="false"
-                android:textColor="#000000"
                 android:textSize="16sp"
                 tools:text="a  a a aa a a a a a a aa  b b b" />
 
@@ -57,7 +57,6 @@
                 android:paddingLeft="@dimen/horizontal_padding"
                 android:paddingRight="16dp"
                 android:singleLine="true"
-                android:textColor="#555555"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 tools:text="Price" />
@@ -74,9 +73,9 @@
                 android:id="@+id/textSubName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textColor="?android:textColorSecondary"
                 android:layout_weight="1"
                 android:paddingLeft="16dp"
-                android:textColor="@color/dark_grey"
                 android:textSize="14sp"
                 tools:text="SubName" />
 

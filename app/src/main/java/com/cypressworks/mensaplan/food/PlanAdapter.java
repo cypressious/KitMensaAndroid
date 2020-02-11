@@ -67,6 +67,11 @@ class PlanAdapter extends BaseAdapter {
                 tag = (HeaderHolder) v.getTag();
             }
             final Line line = (Line) items.get(position);
+            if (position == 0) {
+                tag.separator.setVisibility(View.INVISIBLE);
+            } else {
+                tag.separator.setVisibility(View.VISIBLE);
+            }
             tag.name.setText(line.getName());
         } else {
             // Item
@@ -153,9 +158,11 @@ class PlanAdapter extends BaseAdapter {
     }
 
     private static class HeaderHolder {
+        final View separator;
         final TextView name;
 
         HeaderHolder(final View v) {
+            separator = v.findViewById(R.id.list_header_separator);
             name = v.findViewById(R.id.list_header_title);
         }
     }

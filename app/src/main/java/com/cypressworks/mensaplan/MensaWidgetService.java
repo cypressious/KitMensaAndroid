@@ -101,7 +101,6 @@ public class MensaWidgetService extends RemoteViewsService {
             if (items.isEmpty()) {
                 rv = new RemoteViews(c.getPackageName(), android.R.layout.simple_list_item_1);
                 rv.setTextViewText(android.R.id.text1, c.getString(R.string.no_plan_header));
-                rv.setTextColor(android.R.id.text1, Color.BLACK);
             } else {
 
                 final Object object = items.get(position);

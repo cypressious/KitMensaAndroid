@@ -13,12 +13,12 @@
 
     <TextView
         android:id="@+id/list_header_title"
+        android:textColor="@color/accent"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="4dp"
         android:text="header"
         android:textAllCaps="true"
-        android:textColor="@color/accent"
         android:textSize="12sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
