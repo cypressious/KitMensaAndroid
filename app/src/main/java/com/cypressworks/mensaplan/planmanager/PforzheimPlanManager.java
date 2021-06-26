@@ -8,7 +8,6 @@ import java.util.Map;
 public class PforzheimPlanManager extends AkkStudentenWerkPlanManager {
     private final static String providerName = "tiefenbronner";
     public final static String fullProviderName = "Mensa Fachhochschule Pforzheim";
-    private final static String akkKey = "fh-pf";
     private final static String studentenWerkKey = "tiefenbronner";
 
     private static final Map<String, String> lineNames = new HashMap<>();
@@ -22,11 +21,6 @@ public class PforzheimPlanManager extends AkkStudentenWerkPlanManager {
 
     public PforzheimPlanManager(final Context c) {
         super(c);
-    }
-
-    @Override
-    protected String getAkkKey() {
-        return akkKey;
     }
 
     @Override

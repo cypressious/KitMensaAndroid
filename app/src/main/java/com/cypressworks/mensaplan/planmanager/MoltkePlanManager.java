@@ -8,7 +8,6 @@ import java.util.Map;
 public class MoltkePlanManager extends AkkStudentenWerkPlanManager {
     private final static String providerName = "moltke";
     public final static String fullProviderName = "Mensa Moltkestraße";
-    private final static String akkKey = "fh";
     private final static String studentenWerkKey = "moltke";
 
     private static final Map<String, String> lineNames = new HashMap<>();
@@ -24,11 +23,6 @@ public class MoltkePlanManager extends AkkStudentenWerkPlanManager {
 
     public MoltkePlanManager(final Context c) {
         super(c);
-    }
-
-    @Override
-    protected String getAkkKey() {
-        return akkKey;
     }
 
     @Override

@@ -23,11 +23,6 @@ public class HolzgartenstrPlanManager extends AkkStudentenWerkPlanManager {
     }
 
     @Override
-    protected String getAkkKey() {
-        return null;
-    }
-
-    @Override
     protected String getStudentenwerkKey() {
         return studentenWerkKey;
     }

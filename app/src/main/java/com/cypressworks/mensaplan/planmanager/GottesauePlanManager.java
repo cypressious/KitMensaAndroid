@@ -8,7 +8,6 @@ import java.util.Map;
 public class GottesauePlanManager extends AkkStudentenWerkPlanManager {
     private final static String providerName = "gottesaue";
     public final static String fullProviderName = "Mensa Schloss Gottesaue";
-    private final static String akkKey = "mh";
     private final static String studentenWerkKey = "gottesaue";
 
     private static final Map<String, String> lineNames = new HashMap<>();
@@ -20,11 +19,6 @@ public class GottesauePlanManager extends AkkStudentenWerkPlanManager {
 
     public GottesauePlanManager(final Context c) {
         super(c);
-    }
-
-    @Override
-    protected String getAkkKey() {
-        return akkKey;
     }
 
     @Override

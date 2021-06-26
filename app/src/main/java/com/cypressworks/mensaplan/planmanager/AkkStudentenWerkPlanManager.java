@@ -49,8 +49,6 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
         super(c);
     }
 
-    abstract protected String getAkkKey();
-
     abstract protected String getStudentenwerkKey();
 
     abstract protected String getLineName(String key);
