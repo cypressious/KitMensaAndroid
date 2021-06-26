@@ -39,7 +39,8 @@ public class MensaDropdownAdapter extends BaseAdapter implements
             ErzbergerPlanManager.class,//
             GottesauePlanManager.class, //
             PforzheimPlanManager.class, //
-            HolzgartenstrPlanManager.class};
+            HolzgartenstrPlanManager.class, //
+            CafeteriaMoltkePlanManager.class};
 
     private static final String[] names = {//
             AdenauerPlanManager.fullProviderName,//
@@ -47,7 +48,8 @@ public class MensaDropdownAdapter extends BaseAdapter implements
             ErzbergerPlanManager.fullProviderName,//
             GottesauePlanManager.fullProviderName, //
             PforzheimPlanManager.fullProviderName, //
-            HolzgartenstrPlanManager.fullProviderName};
+            HolzgartenstrPlanManager.fullProviderName, //
+            CafeteriaMoltkePlanManager.fullProviderName};
 
     @SuppressWarnings("unchecked")
     public static PlanManager getManagerFromPreferences(final Context c) {
@@ -113,9 +115,8 @@ public class MensaDropdownAdapter extends BaseAdapter implements
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
         theme.resolveAttribute(android.R.attr.textColorPrimary, typedValue, true);
-        TypedArray arr =
-                context.obtainStyledAttributes(typedValue.data, new int[]{
-                        android.R.attr.textColorPrimary});
+        TypedArray arr = context.obtainStyledAttributes(typedValue.data,
+                                                        new int[]{android.R.attr.textColorPrimary});
         int primaryColor = arr.getColor(0, -1);
         arr.recycle();
         return primaryColor;

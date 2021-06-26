@@ -34,6 +34,7 @@ public abstract class PlanManager {
         managerFactories.put(GottesauePlanManager.class, GottesauePlanManager::new);
         managerFactories.put(PforzheimPlanManager.class, PforzheimPlanManager::new);
         managerFactories.put(HolzgartenstrPlanManager.class, HolzgartenstrPlanManager::new);
+        managerFactories.put(CafeteriaMoltkePlanManager.class, CafeteriaMoltkePlanManager::new);
     }
 
     public static synchronized PlanManager getInstance(
