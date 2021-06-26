@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import androidx.core.content.ContextCompat;
 import com.cypressworks.mensaplan.food.Line;
 import com.cypressworks.mensaplan.food.Meal;
 import com.cypressworks.mensaplan.food.Plan;
@@ -24,7 +23,10 @@ import com.cypressworks.mensaplan.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * @author Kirill Rakhman
@@ -39,7 +41,7 @@ public class MensaWidgetService extends RemoteViewsService {
 
     static class MensaRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         private final Context c;
-        private List<Object> items;
+        private List<Object> items = Collections.emptyList();
         private final SharedPreferences prefs;
         private final LikeManager likeManager;
 
