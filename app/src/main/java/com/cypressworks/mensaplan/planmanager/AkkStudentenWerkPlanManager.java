@@ -123,7 +123,7 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
                         meal = new Meal(mealObject.optString("meal"), mealObject.optString("dish"), price);
                         meal.setBio(mealObject.optBoolean("bio"));
                         meal.setFish(mealObject.optBoolean("fish"));
-                        meal.setPork(mealObject.optBoolean("pork"));
+                        meal.setPork(mealObject.optBoolean("pork") || mealObject.optBoolean("pork_aw"));
                         meal.setCow(mealObject.optBoolean("cow"));
                         meal.setCow_aw(mealObject.optBoolean("cow_aw"));
                         meal.setVegan(mealObject.optBoolean("vegan"));
