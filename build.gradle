@@ -2,10 +2,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0-rc03'
+        classpath 'com.android.tools.build:gradle:4.2.1'
     }
 }
 
@@ -13,7 +12,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
