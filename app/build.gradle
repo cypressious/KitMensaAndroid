@@ -11,12 +11,12 @@ android {
     defaultConfig {
         applicationId 'com.cypressworks.mensaplan'
         minSdkVersion 14
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 28
         versionName "2.3.0"
     }
 
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
