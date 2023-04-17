@@ -1,0 +1,1 @@
+Die App KIT Mensa App erhebt und verarbeitet keine personenbezogenen Daten.
