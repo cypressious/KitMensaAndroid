@@ -38,7 +38,6 @@ import java.util.Map;
  * @author Kirill Rakhman
  */
 public abstract class AkkStudentenWerkPlanManager extends PlanManager {
-    protected static final String blankAKKURL = "http://mensa.akk.uni-karlsruhe.de/?DATUM=%DATE%&%KEY%=1";
     private static final String blankStudentenwerkURL = "https://www.sw-ka.de/de/hochschulgastronomie/speiseplan/mensa_adenauerring/?view=ok&STYLE=popup_plain&c=%KEY%&p=1&kw=%KW%";
     private static final String studentenwerkRestURL = "https://www.sw-ka.de/json_interface/canteen/?mensa[]=%KEY%";
 
