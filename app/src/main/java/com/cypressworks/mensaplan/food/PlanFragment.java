@@ -35,7 +35,6 @@ import com.nineoldandroids.view.ViewPropertyAnimator;
 import java.util.Calendar;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
 
 /**
@@ -171,16 +170,13 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
         final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         String url;
 
-        switch (item.getItemId()) {
-            case R.id.goolemeal:
-                url = "http://www.google.com/m/search?q=%q%";
-                break;
-            case R.id.googlemailpic:
-                url = "http://www.google.com/m/search?q=%q%&tbm=isch";
-                break;
-            default:
-                return true;
-
+        int itemId = item.getItemId();
+        if (itemId == R.id.goolemeal) {
+            url = "http://www.google.com/m/search?q=%q%";
+        } else if (itemId == R.id.googlemailpic) {
+            url = "http://www.google.com/m/search?q=%q%&tbm=isch";
+        } else {
+            return true;
         }
         try {
             // Gericht, auf das geklickt wurde

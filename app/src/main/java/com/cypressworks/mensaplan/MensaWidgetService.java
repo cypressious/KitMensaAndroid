@@ -1,11 +1,9 @@
 package com.cypressworks.mensaplan;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +29,6 @@ import androidx.core.content.ContextCompat;
 /**
  * @author Kirill Rakhman
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MensaWidgetService extends RemoteViewsService {
 
     @Override

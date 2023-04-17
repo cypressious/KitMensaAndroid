@@ -97,10 +97,10 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
     private void setTaskDescription() {
         final TypedValue typedValue = new TypedValue();
         final Resources.Theme theme = getTheme();
-        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
-        final int color = typedValue.data;
-
-        AndroidV21Helper.setTaskDescription(this, null, R.drawable.icon_white, color);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            theme.resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
+            AndroidV21Helper.setTaskDescription(this, null, R.drawable.icon_white, typedValue.data);
+        }
     }
 
     @Override
@@ -291,15 +291,14 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
             return true;
         }
 
-        switch (item.getItemId()) {
-
-            case R.id.webcam:
-                final Intent webcamActivity = new Intent(getBaseContext(), WebCamActivity.class);
-                startActivity(webcamActivity);
-                return true;
-            case R.id.today:
-                scrollToToday();
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == R.id.webcam) {
+            final Intent webcamActivity = new Intent(getBaseContext(), WebCamActivity.class);
+            startActivity(webcamActivity);
+            return true;
+        } else if (itemId == R.id.today) {
+            scrollToToday();
+            return true;
         }
 
         return false;

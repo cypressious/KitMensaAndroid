@@ -40,17 +40,20 @@
                 android:singleLine="true"
                 android:text="Mensa am Adenauer Ring"
                 android:textAllCaps="true"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textColor="@android:color/white"/>
 
             <TextView
                 android:id="@+id/textViewDay"
                 android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
                 android:layout_height="wrap_content"
                 android:text="05.11.2013"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <ImageButton
+            android:contentDescription="@string/app_name"
             android:id="@+id/widgetButtonRefresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

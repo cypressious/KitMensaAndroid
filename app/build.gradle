@@ -11,12 +11,12 @@ android {
     defaultConfig {
         applicationId 'com.cypressworks.mensaplan'
         minSdkVersion 14
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 30
         versionName "2.4.0"
     }
 
-    compileSdkVersion 30
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -32,13 +32,16 @@ android {
     }
     productFlavors {
     }
-
-    lintOptions {
-        disable 'InvalidPackage'
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/services/javax.annotation.processing.Processor']
+        }
     }
 
-    packagingOptions {
-        exclude 'META-INF/services/javax.annotation.processing.Processor'
+
+    namespace 'com.cypressworks.mensaplan'
+    lint {
+        disable 'InvalidPackage'
     }
 }
 

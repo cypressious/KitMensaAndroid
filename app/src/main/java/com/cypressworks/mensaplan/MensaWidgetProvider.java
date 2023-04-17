@@ -1,6 +1,5 @@
 package com.cypressworks.mensaplan;
 
-import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -8,7 +7,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -22,7 +20,6 @@ import java.util.Locale;
 /**
  * @author Kirill Rakhman
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MensaWidgetProvider extends AppWidgetProvider {
 
     private static final SimpleDateFormat weekDayDateFormat = new SimpleDateFormat("E (dd.MM.)",
@@ -66,13 +63,15 @@ public class MensaWidgetProvider extends AppWidgetProvider {
             final Intent refreshIntent = new Intent(context, getClass());
             refreshIntent.setAction(ACTION_RELOAD);
             final PendingIntent refreshPendingIntent = PendingIntent.getBroadcast(context, 0,
-                                                                                  refreshIntent, 0);
+                                                                                  refreshIntent,
+                                                                                  PendingIntent.FLAG_IMMUTABLE);
             rv.setOnClickPendingIntent(R.id.widgetButtonRefresh, refreshPendingIntent);
 
             // reload button
             final Intent mainActIntent = new Intent(context, MainActivity.class);
             final PendingIntent mainPendingIntent = PendingIntent.getActivity(context, 0,
-                                                                              mainActIntent, 0);
+                                                                              mainActIntent,
+                                                                              PendingIntent.FLAG_IMMUTABLE);
             rv.setOnClickPendingIntent(R.id.LinearLayoutHeader, mainPendingIntent);
 
             // list
