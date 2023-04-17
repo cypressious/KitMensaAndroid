@@ -27,6 +27,7 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -38,7 +39,7 @@ import java.util.Map;
  */
 public abstract class AkkStudentenWerkPlanManager extends PlanManager {
     protected static final String blankAKKURL = "http://mensa.akk.uni-karlsruhe.de/?DATUM=%DATE%&%KEY%=1";
-    private static final String blankStudentenwerkURL = "https://www.sw-ka.de/de/essen/?view=ok&STYLE=popup_plain&c=%KEY%&p=1&kw=%KW%";
+    private static final String blankStudentenwerkURL = "https://www.sw-ka.de/de/hochschulgastronomie/speiseplan/mensa_adenauerring/?view=ok&STYLE=popup_plain&c=%KEY%&p=1&kw=%KW%";
     private static final String studentenwerkRestURL = "https://www.sw-ka.de/json_interface/canteen/?mensa[]=%KEY%";
 
     private static final SimpleDateFormat dayMonthFormat = new SimpleDateFormat("dd.MM",
@@ -180,10 +181,31 @@ public abstract class AkkStudentenWerkPlanManager extends PlanManager {
             final Elements mealElements = lineElement.select("tr");
 
             for (final Element mealElement : mealElements) {
-                final String mealName = mealElement.select("span.bg").text();
-                final String mealPrice = mealElement.select("span.price_1").text();
+                final String type = mealElement.select("td:nth-child(1)").text();
+                final String mealName = mealElement.select("td:nth-child(2) span.bg b").text();
+                final String dish = mealElement.select("td:nth-child(2) span.bg span").text();
+                final String mealPrice = mealElement.select("td:nth-child(3) span.bg").text();
 
-                final Meal meal = new Meal(mealName, null, mealPrice);
+                final Meal meal = new Meal(mealName, dish, mealPrice);
+
+                if (type != null && type.startsWith("[") && type.endsWith("]")) {
+                    List<String> parts = Arrays.asList(type.substring(1, type.length() - 1).split(","));
+
+                    // if (parts.contains("")) meal.setBio(true);
+                    if (parts.contains("MSC"))
+                        meal.setFish(true);
+                    if (parts.contains("S"))
+                        meal.setPork(true);
+                    if (parts.contains("R"))
+                        meal.setCow(true);
+                    if (parts.contains("RAT"))
+                        meal.setCow_aw(true);
+                    if (parts.contains("VG"))
+                        meal.setVegan(true);
+                    if (parts.contains("VEG"))
+                        meal.setVeg(true);
+                }
+
                 line.addMeal(meal);
             }
 
