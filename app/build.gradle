@@ -10,13 +10,13 @@ android {
 
     defaultConfig {
         applicationId 'com.cypressworks.mensaplan'
-        minSdkVersion 14
-        targetSdkVersion 34
-        versionCode 34
+        minSdkVersion 21
+        targetSdkVersion 36
+        versionCode 35
         versionName "2.5.3"
     }
 
-    compileSdk 34
+    compileSdk 36
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -43,14 +43,17 @@ android {
     lint {
         disable 'InvalidPackage'
     }
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'org.jsoup:jsoup:1.15.3'
-    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'org.jsoup:jsoup:1.21.1'
     implementation files('libs/json-simple.jar')
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.3.0'
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:2.1.21"))
 }
 
 def props = new Properties()

@@ -1,5 +1,7 @@
 package com.cypressworks.mensaplan;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.backup.BackupManager;
 import android.content.Context;
@@ -14,16 +16,13 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.TextView;
 
 import com.cypressworks.mensaplan.planmanager.PlanManager;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.view.ViewHelper;
-import com.nineoldandroids.view.ViewPropertyAnimator;
 
 import java.io.File;
 import java.io.IOException;
@@ -137,24 +136,24 @@ public class HappyCowActivity extends Activity {
                 final float mWidthScale = (float) thumbnailWidth / layout.getWidth();
                 final float mHeightScale = (float) thumbnailHeight / layout.getHeight();
 
-                ViewHelper.setPivotX(layout, 0);
-                ViewHelper.setPivotY(layout, 0);
-                ViewHelper.setScaleX(layout, mWidthScale);
-                ViewHelper.setScaleY(layout, mHeightScale);
-                ViewHelper.setTranslationX(layout, mLeftDelta);
-                ViewHelper.setTranslationY(layout, mTopDelta);
+                layout.setPivotX(0);
+                layout.setPivotY(0);
+                layout.setScaleX(mWidthScale);
+                layout.setScaleY(mHeightScale);
+                layout.setTranslationX(mLeftDelta);
+                layout.setTranslationY(mTopDelta);
 
                 // Animate scale and translation to go from
                 // thumbnail to full
                 // size
-                ViewPropertyAnimator.animate(layout).scaleX(1).scaleY(1).translationX(
+                layout.animate().scaleX(1).scaleY(1).translationX(
                         0).translationY(0).setInterpolator(sDecelerator).start();
 
                 final TransitionDrawable backDrawable = new TransitionDrawable(
                         new Drawable[]{new ColorDrawable(
                                 Color.parseColor("#00000000")), new ColorDrawable(
                                 Color.parseColor("#99000000"))});
-                background.setBackgroundDrawable(backDrawable);
+                background.setBackground(backDrawable);
                 backDrawable.startTransition(300);
 
                 return true;
@@ -168,7 +167,7 @@ public class HappyCowActivity extends Activity {
     }
 
     private void animateOut() {
-        final ViewPropertyAnimator anim = ViewPropertyAnimator.animate(background).alpha(0f);
+        final ViewPropertyAnimator anim = background.animate().alpha(0f);
         anim.setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(final Animator animation) {

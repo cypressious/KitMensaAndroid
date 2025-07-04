@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 
 import com.cypressworks.mensaplan.R;
 
+import androidx.annotation.NonNull;
+
 /**
  * Created by Kirill on 29.10.2014.
  */
@@ -37,7 +39,7 @@ public class UnderlinePagerTitleStrip extends PagerTitleStrip {
     }
 
     @Override
-    protected void onDraw(final Canvas canvas) {
+    protected void onDraw(@NonNull final Canvas canvas) {
         super.onDraw(canvas);
 
         final int bottom = getHeight();

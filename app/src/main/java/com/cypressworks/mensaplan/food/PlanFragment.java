@@ -1,5 +1,8 @@
 package com.cypressworks.mensaplan.food;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -27,10 +31,6 @@ import com.cypressworks.mensaplan.HappyCowActivity;
 import com.cypressworks.mensaplan.R;
 import com.cypressworks.mensaplan.ScrollListener;
 import com.cypressworks.mensaplan.planmanager.PlanManager;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewPropertyAnimator;
 
 import java.util.Calendar;
 
@@ -329,8 +329,8 @@ public class PlanFragment extends ListFragment implements OnItemClickListener {
                 ObjectAnimator.ofFloat(cowView, "translationY", 0f,
                                        -getResources().getDimension(R.dimen.cow_jump),
                                        0f).setDuration(1000).start();
-                final ViewPropertyAnimator rotation = ViewPropertyAnimator.animate(
-                        cowView).rotationBy(360).setDuration(1000);
+                final ViewPropertyAnimator rotation = cowView.animate(
+                        ).rotationBy(360).setDuration(1000);
                 rotation.setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(final Animator animation) {

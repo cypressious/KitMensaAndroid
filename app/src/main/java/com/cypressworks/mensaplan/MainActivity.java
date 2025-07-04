@@ -1,5 +1,6 @@
 package com.cypressworks.mensaplan;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.backup.BackupManager;
 import android.content.Intent;
@@ -9,7 +10,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -24,7 +24,6 @@ import android.widget.ListView;
 
 import com.cypressworks.mensaplan.planmanager.MensaDropdownAdapter;
 import com.cypressworks.mensaplan.planmanager.PlanManager;
-import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.io.File;
 import java.util.Calendar;
@@ -83,9 +82,7 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
 
         prepareActionBar();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setTaskDescription();
-        }
+        setTaskDescription();
 
         if (!prefs.getBoolean("backed_up", false) && HappyCowActivity.getCollectedFile(
                 this).exists()) {
@@ -97,10 +94,8 @@ public class MainActivity extends AppCompatActivity implements ScrollListener {
     private void setTaskDescription() {
         final TypedValue typedValue = new TypedValue();
         final Resources.Theme theme = getTheme();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            theme.resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
-            AndroidV21Helper.setTaskDescription(this, null, R.drawable.icon_white, typedValue.data);
-        }
+        theme.resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
+        AndroidV21Helper.setTaskDescription(this, null, R.drawable.icon_white, typedValue.data);
     }
 
     @Override
