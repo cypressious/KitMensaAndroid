@@ -51,6 +51,6 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           packageName: de.rakhman.cooking
-          releaseFiles: 'app/build/outputs/bundle/release/app-release.apk'
+          releaseFiles: 'app/build/outputs/apk/release/app-release.apk'
           mappingFile: 'app/build/outputs/mapping/release/mapping.txt'
           track: production
