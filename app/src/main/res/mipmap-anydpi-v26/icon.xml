@@ -8,7 +8,7 @@
   </foreground>
   <monochrome>
       <inset
-          android:drawable="@drawable/icon_white"
-          android:inset="33%" />
+          android:drawable="@drawable/icon_monochrome"
+          android:inset="27%" />
   </monochrome>
 </adaptive-icon>
